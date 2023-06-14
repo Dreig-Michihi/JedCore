@@ -49,6 +49,7 @@ public class Drain extends WaterAbility implements AddonAbility {
 	private double absorbSpeed; // 0.1
 	@Attribute(Attribute.RADIUS)
 	private int radius; // 6
+	private int collisionRadius; // 2.5
 	@Attribute("Chance")
 	private int chance; // 20
 	private int absorbRate; // 6
@@ -99,6 +100,7 @@ public class Drain extends WaterAbility implements AddonAbility {
 		cooldown = config.getLong("Abilities.Water.Drain.Cooldown");
 		absorbSpeed = config.getDouble("Abilities.Water.Drain.AbsorbSpeed");
 		radius = config.getInt("Abilities.Water.Drain.Radius");
+		collisionRadius = config.getInt("Abilities.Water.Drain.CollisionRadius");
 		chance = config.getInt("Abilities.Water.Drain.AbsorbChance");
 		absorbRate = config.getInt("Abilities.Water.Drain.AbsorbRate");
 		holdRange = config.getInt("Abilities.Water.Drain.HoldRange");
@@ -194,7 +196,7 @@ public class Drain extends WaterAbility implements AddonAbility {
 			hasCharge = false;
 			charge = 7;
 			blasts++;
-			new DrainBlast(player, blastRange, blastDamage, blastSpeed, holdRange);
+			new DrainBlast(player, blastRange, blastDamage, blastSpeed, holdRange, collisionRadius);
 		}
 	}
 

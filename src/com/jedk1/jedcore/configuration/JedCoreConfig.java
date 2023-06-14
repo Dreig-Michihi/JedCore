@@ -708,6 +708,7 @@ public class JedCoreConfig {
 		config.addDefault("Abilities.Water.Drain.AbsorbChance", 20);
 		config.addDefault("Abilities.Water.Drain.AbsorbRate", 6);
 		config.addDefault("Abilities.Water.Drain.Radius", 6);
+		config.addDefault("Abilities.Water.Drain.CollisionRadius", 2.5);
 		config.addDefault("Abilities.Water.Drain.HoldRange", 2);
 		config.addDefault("Abilities.Water.Drain.AllowRainSource", true);
 		config.addDefault("Abilities.Water.Drain.BlastsEnabled", true);

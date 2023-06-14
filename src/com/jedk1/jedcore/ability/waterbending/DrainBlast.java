@@ -31,12 +31,15 @@ public class DrainBlast extends WaterAbility implements AddonAbility {
 	private final double blastDamage; // 1.5
 	@Attribute(Attribute.SPEED)
 	private final double blastSpeed; // 2
+	@Attribute(Attribute.RADIUS)
+	private final double collisionRadius; // 2.5
 
-	public DrainBlast(Player player, double range, double damage, double speed, int holdrange) {
+	public DrainBlast(Player player, double range, double damage, double speed, int holdrange, float radius) {
 		super(player);
 		this.blastRange = range;
 		this.blastDamage = damage;
 		this.blastSpeed = speed;
+		this.collisionRadius = radius;
 		location = player.getEyeLocation().clone().add(player.getEyeLocation().getDirection().multiply(holdrange));
 		start();
 	}
@@ -73,7 +76,7 @@ public class DrainBlast extends WaterAbility implements AddonAbility {
 			Drain.WATER_TEMPS.add(tb);
 			tb.setRevertTask(() -> Drain.WATER_TEMPS.remove(tb));
 
-			for (Entity entity : GeneralMethods.getEntitiesAroundPoint(location, 2.5)) {
+			for (Entity entity : GeneralMethods.getEntitiesAroundPoint(location, collisionRadius)) {
 				if (entity instanceof LivingEntity && entity.getEntityId() != player.getEntityId() && !(entity instanceof ArmorStand)) {
 					DamageHandler.damageEntity(entity, blastDamage, this);
 					travelled = blastRange;
